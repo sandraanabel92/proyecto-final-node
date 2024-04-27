@@ -2,7 +2,7 @@
 
 const express = require("express")
 const userRoutes = require("./routes/userRoutes")
-const db = require("./db/db")
+const connectDb = require("./db/db")
 
 //Creacion de una instacia de express
 
@@ -16,6 +16,10 @@ app.use(express.json())
 //Rutas
 
 //app.use("/api/users", userRoutes)
+
+//Iniciamos la DB
+
+connectDb()
 
 //Inicializacion del servidor
 
