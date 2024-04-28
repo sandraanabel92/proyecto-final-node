@@ -53,7 +53,7 @@ function deleteUser(req, res){
 
     //findByIdAndDelete() busca y elimina un usuario por Id
     User.findByIdAndDelete(userId)
-    .then(() => res.status(204).send("Usuario eliminado correctamente"))
+    .then(() => res.status(200).send("Usuario eliminado correctamente"))
     .catch((err) => {
         console.error(err);
         res.status(500).send("Error al eliminar el usuario");
