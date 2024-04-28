@@ -6,7 +6,7 @@ function getAllUsers(req, res) {
     //metodo fin() de Mongoose para encontrar todos los usuarios
 
     User.find()
-        .then(users => res.json(users)) //Se envia todos los usarios como respuesta
+        .then(users => res.status(200).json(users)) //Se envia todos los usarios como respuesta
         .catch(err => {
             console.error(err)
             res.status(500).send("Error al obtener usuarios")
@@ -21,9 +21,28 @@ function createUser(req, res) {
 
     //Creacion de un nuevo usuario con el metodo create()
     User.create({ nombre, edad, email, contraseña })
-        .then(newUser => res.json(newUser))
+        .then(newUser => res.status(201).json(newUser))
         .catch(err => {
             console.error(err)
             res.status(500).send("Error al crear un nuevo Usuario")
         })
+}
+
+//Actualizacion del usuario
+function updatedUser(req, res){
+
+    //Obtencion del Id del usuario a actualizar
+    const userId= req.params.id
+
+    //Obtencion de los datos actualizados del body de la req
+    const updatedUser= req.body
+
+    //findByIdAndUpdate() para buscar y actualizar el usuario por ID
+    User.findByIdAndUpdate(userId, updatedUser, {new:true})
+    .then(user =>res.status(200).json(user))
+    .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error al actualizar el usuario");
+    })
+
 }
