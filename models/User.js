@@ -8,20 +8,20 @@ const { type } = require("os")
 const userSchema = new mongoose.Schema({
     nombre : {
         type: String,
-        required: true  // El nombre es obligatorio
+        require: true  // El nombre es obligatorio
     },
     edad : {
         type: Number,
-        required: true
+        require: true
     },
     email : {
         type : String,
-        required: true,
+        require: true,
         unique: true  //El correo electronico debe de ser unico
     },
     contraseña : {
         type: String,
-        required: true
+        require: true
 
     } 
 })
