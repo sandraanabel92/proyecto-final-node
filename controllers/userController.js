@@ -1,5 +1,5 @@
 //Importar el modelo de Mongo
-const User = required("../models/User")
+const User = require("../models/User")
 
 //Funcion para obtner los usuarios
 function getAllUsers(req, res) {

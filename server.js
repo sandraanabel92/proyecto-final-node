@@ -15,7 +15,7 @@ app.use(express.json())
 
 //Rutas
 
-//app.use("/api/users", userRoutes)
+app.use("/api/users", userRoutes)
 
 //Iniciamos la DB
 
