@@ -59,3 +59,12 @@ function deleteUser(req, res){
         res.status(500).send("Error al eliminar el usuario");
     })
 }
+
+//Exportacion de las funciones
+
+module.exports = {
+    createUser,
+    deleteUser,
+    getAllUsers,
+    updatedUser
+}
