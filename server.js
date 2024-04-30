@@ -1,10 +1,14 @@
-//Importar express, rutas de usuario y la conexion a la db
+//Importar express y la conexion a la db
 
 const express = require("express")
-const userRoutes = require("./routes/userRoutes")
 const connectDb = require("./db/db")
 
 //Creacion de una instacia de express
+
+//Importamos las rutas
+const userRoutes = require("./routes/userRoutes")
+const authRoutes = require("./routes/authRoutes")
+const sessionRoutes = require("./routes/sessionRoutes")
 
 const app = express()
 const PORT = 3010   
@@ -13,9 +17,17 @@ const PORT = 3010
 
 app.use(express.json())
 
-//Rutas
+//Rutas de autenticacion
+
+app.use("/api/auth", authRoutes)
+
+//Rutas de usuarios
 
 app.use("/api/users", userRoutes)
+
+//Rutas del usuario actual
+
+app.use("/api/session", sessionRoutes)
 
 //Iniciamos la DB
 

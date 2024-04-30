@@ -29,8 +29,7 @@ function login(req, res) {
 }
 
 //Controlador para cerrar la sesion
-function logout() {
-    localStorage.removeItem("token")
+function logout(req,res) {
     res.status(200).json({ message: "Sesion cerrada exitosamente" })
 }
 
