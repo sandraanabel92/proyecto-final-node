@@ -10,6 +10,9 @@ const authController = require("../controllers/authController")
 //Rutas para el Auth del  User
 
 router.post("/login", authController.login)
+
+//Ruta para cerrar sesion
+
 router.get("/logout", authController.logout)
 
 module.exports = router
