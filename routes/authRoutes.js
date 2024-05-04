@@ -7,13 +7,17 @@ const router = express.Router()
 
 const authController = require("../controllers/authController")
 
+//Importamos el middleware de seguridad
+
+const verifyToken= require("../middleware/verifyToken")
+
 //Rutas para el Auth del  User
 
 router.post("/login", authController.login)
 
 //Ruta para cerrar sesion
 
-router.get("/logout", authController.logout)
+router.post("/logout",verifyToken, authController.logout)
 
 module.exports = router
 
