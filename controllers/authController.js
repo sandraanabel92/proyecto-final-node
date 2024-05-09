@@ -48,12 +48,12 @@ function login(req, res) {
 
 //Controlador para cerrar la sesion
 function logout(req, res) {
-    const token = req.header.authorization
+    const token = req.headers.authorization.split(" ")[1]
 
     //Buscamos el token en la base de datos y lo eliminamos
     AuthToken.findOneAndDelete({token})
     .then(()=>{
-        res.status(200).json({message: "Sesion cerrada exitosamente"})
+        res.status(200).json({message: "Sesion cerrada exitosamente", error: {token}})
     })
     .catch((error)=>{
         console.error(error)
